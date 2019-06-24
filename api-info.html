@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Игровая зона тестов</title>
+  <title>Конструктор кодера</title>
 </head>
 
 <body>
@@ -14,17 +14,16 @@
   <a href="play-zone.html">Игровая зона</a>
   <a href="api-info.html">Документация API</a>
 
-  <h3>Число на входе</h3>
-  <input type="text" placeholder="Число на вход" value="123456789" />
-
-  <h3>Строка-комбинация фильтров</h3>
-  <textarea placeholder="список фильтов"></textarea>
+  <h3>API Методы</h3>
+  <ol>
+    <li>sumNumberByIndex(item, first, second) : number - возвращает сумму цифр на индексах first и second у item. Пример
+      2512->
+      sumNumberByIndex(2512, 0, 3) -> 4</li>
+    <li>crat(item, pow) : boolean - возвращает true, если item кратно pow. Пример 2512 и 4 -> crat(2512, 4) -> true</li>
+    <li>adler32(item) : string - возвращает 8-значный hash от item по шифру Adler32. Пример 2512 -> adler32(2512) ->
+      01ff00cb</li>
+  </ol>
   <hr />
-  <button>Запустить все шаги</button>
-  <button>Запустить 1 шаг</button>
-  <hr />
-  <h3>Результат работы</h3>
-  <p>Отсутствуют инструкции</p>
 
   <script>
     let base = "123456789";
