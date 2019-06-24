@@ -59,8 +59,12 @@
   <h2>API Хэширование. <a href="coder-hashing.js" target="blank">Библиотека coder-hashing.js</a></h2>
   <h4>Методы: </h4>
   <ol>
-    <li>md5(text) : string - возвращает строку с шифрованием md5. Пример md5('2512') ->
+    <li>md5(text) : string - возвращает строку с шифрованием md5 (32 символа). Пример md5('2512') ->
       "831caa1b600f852b7844499430ecac17"</li>
+    <li>sha256(text) : string - возвращает строку с шифрованием sha256 (64 символа). Пример sha256('2512') ->
+      "25f9b3ab7e7d3634a79eab88d59a0b4592d42384900dfc10ecc481af5b8dfd3d"</li>
+    <li>sha224(text) : string - возвращает строку с шифрованием sha224 (56 символов). Пример sha224('2512') ->
+      "d3c596a9d75f877cd575aabfb55d9f75b3b852f11b6b43a7220ddd0e"</li>
   </ol>
   <hr />
 
@@ -72,7 +76,7 @@
     </li>
   </ol>
 
-  
+
 
 
 </body>
