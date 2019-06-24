@@ -1,118 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Игровая зона тестов</title>
-  </head>
-  <body>
-    <a href="index.html">Главная информация</a>
-    <a href="constructor.html">Конструктор кодера</a>
-    <a href="play-zone.html">Игровая зона</a>
 
-    <h3>Число на входе</h3>
-    <input type="text" placeholder="Число на вход" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Игровая зона тестов</title>
+</head>
 
-    <h3>Строка-комбинация фильтров</h3>
-    <textarea placeholder="список фильтов"></textarea>
-    <hr />
-    <button>Запустить все шаги</button>
-    <button>Запустить 1 шаг</button>
-    <hr />
-    <h3>Результат работыы</h3>
+<body>
+  <a href="index.html">Главная информация</a>
+  <a href="constructor.html">Конструктор кодера</a>
+  <a href="play-zone.html">Игровая зона</a>
 
-    <script>
-      let base = "123456789";
-      // calc(base);
-      // increment("21", 20);
+  <h3>Число на входе</h3>
+  <input type="text" placeholder="Число на вход" value="123456789" />
 
-      binary("20");
-      let to = convert("1231412");
-      let from = convertBack(to);
-      console.log(to, from);
-      console.log(crat(10, 2));
+  <h3>Строка-комбинация фильтров</h3>
+  <textarea placeholder="список фильтов"></textarea>
+  <hr />
+  <button>Запустить все шаги</button>
+  <button>Запустить 1 шаг</button>
+  <hr />
+  <h3>Результат работы</h3>
+  <p>Отсутствуют инструкции</p>
 
-      function calc(base) {
-        console.log(base);
-        for (let step = 0; base.length > 2; step++) {
-          let short = base.substr(0, base.length - 2);
-          let two = base.substr(-2);
-          let three = base.substr(-3);
-          let tail = three - two;
-          base = short + tail;
-          console.log(short, two, three, tail);
-          console.log(step, base);
-          if (step > 10) {
-            console.log("break");
-            return;
-          }
+  <script>
+    let base = "123456789";
+    // calc(base);
+    // increment("21", 20);
+
+    binary("20");
+    let to = convert("1231412");
+    let from = convertBack(to);
+    console.log(to, from);
+    console.log(crat(10, 2));
+
+    function calc(base) {
+      console.log(base);
+      for (let step = 0; base.length > 2; step++) {
+        let short = base.substr(0, base.length - 2);
+        let two = base.substr(-2);
+        let three = base.substr(-3);
+        let tail = three - two;
+        base = short + tail;
+        console.log(short, two, three, tail);
+        console.log(step, base);
+        if (step > 10) {
+          console.log("break");
+          return;
         }
       }
+    }
 
-      function increment(base, step) {
-        console.log("increment", base, step);
-        while (step > 0) {
-          step--;
-          let short = base.substr(0, base.length - 2);
-          let two = base.substr(-2);
-          let three = base.substr(-3);
-          let tail = Number(two) + 99;
-          base = short + tail;
-          console.log(short, two, three, tail);
-          console.log(step, base);
+    function increment(base, step) {
+      console.log("increment", base, step);
+      while (step > 0) {
+        step--;
+        let short = base.substr(0, base.length - 2);
+        let two = base.substr(-2);
+        let three = base.substr(-3);
+        let tail = Number(two) + 99;
+        base = short + tail;
+        console.log(short, two, three, tail);
+        console.log(step, base);
+      }
+    }
+
+    function binary(inner) {
+      let length = inner.length;
+      let max = "9".repeat(length);
+      console.log(length, max, inner);
+
+      let current = "0".repeat(length);
+
+      for (let step = 0; step < 4; step++) {
+        if (current == inner) {
+          console.log("Найдено", current);
+        } else if (current > inner) {
+          console.log(" inner big", current, inner);
+        } else {
+          console.log(" inner small", current, inner);
         }
       }
+    }
 
-      function binary(inner) {
-        let length = inner.length;
-        let max = "9".repeat(length);
-        console.log(length, max, inner);
+    function convert(inner) {
+      let letters = inner.split("");
+      return letters.map((letter, index) =>
+        ("" + (index % 2)).repeat(letter)
+      );
+    }
 
-        let current = "0".repeat(length);
+    function convertBack(arr) {
+      return arr.map(letter => letter.length);
+    }
 
-        for (let step = 0; step < 4; step++) {
-          if (current == inner) {
-            console.log("Найдено", current);
-          } else if (current > inner) {
-            console.log(" inner big", current, inner);
-          } else {
-            console.log(" inner small", current, inner);
-          }
+    function crat(val) {
+      console.log(val);
+      let count = [];
+      for (let start = 2; start < val; start++) {
+        if (val % start == 0) {
+          count.push(start);
         }
       }
+      return count;
+    }
 
-      function convert(inner) {
-        let letters = inner.split("");
-        return letters.map((letter, index) =>
-          ("" + (index % 2)).repeat(letter)
-        );
-      }
+    function prop(val) {
+      let prop = [];
+      prop.push(val % 2 == 0);
+      prop.push(val % 3 == 0);
+      prop.push(val % 5 == 0);
+      prop.push(val % 7 == 0);
+      prop.push(val % 11 == 0);
+      return prop;
+    }
+  </script>
+</body>
 
-      function convertBack(arr) {
-        return arr.map(letter => letter.length);
-      }
-
-      function crat(val) {
-        console.log(val);
-        let count = [];
-        for (let start = 2; start < val; start++) {
-          if (val % start == 0) {
-            count.push(start);
-          }
-        }
-        return count;
-      }
-
-      function prop(val) {
-        let prop = [];
-        prop.push(val % 2 == 0);
-        prop.push(val % 3 == 0);
-        prop.push(val % 5 == 0);
-        prop.push(val % 7 == 0);
-        prop.push(val % 11 == 0);
-        return prop;
-      }
-    </script>
-  </body>
 </html>
