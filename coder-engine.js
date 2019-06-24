@@ -3,10 +3,13 @@ let current = ''
 let next = ''
 let stop = 'return false'
 
-function makeStep(result) {
+let payload = []
+
+function makeStep(result = "need add step result parameters") {
     next = result
     if (isStop()) {
-        steps.push("END STEP. current = " + current)
+        steps.push("END STEP. NEW CURRENT = " + current)
+        payload.push([steps], [current])
     } else {
         current = result
         steps.push(current)
@@ -14,7 +17,7 @@ function makeStep(result) {
     return steps
 }
 
-function logic(text) {
+function inFunc(text = "need add function!") {
     let newFunction = Function(text)
     return newFunction()
 }
@@ -23,6 +26,10 @@ function setStop(text = 'return true') {
     stop = text
 }
 
-function isStop(text = '') {
-    return logic(stop)
+function isStop() {
+    return inFunc(stop)
+}
+
+function setCurrent(value = 'not set value params') {
+    current = value
 }

@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Игровая зона тестов</title>
+  <title>Игровая зона конструктора</title>
 </head>
 
 <body>
@@ -14,10 +14,10 @@
   <a href="play-zone.html">Игровая зона конструтора</a>
   <a href="api-info.html">Документация API</a>
   <a href="api-play-zone.html">Игровая зона API</a>
-  <a href="https://github.com/Lyumih/ultimate_coder" style="float: right">Мы на GitHub</a>
+  <a href="https://github.com/Lyumih/ultimate_coder" target="blank" style="float: right">Мы на GitHub</a>
 
   <h3>Число на входе</h3>
-  <input type="text" placeholder="Число на вход" value="10000" oninput="setCurrent(this.value)" />
+  <input type="text" placeholder="Число на вход" value="10000" oninput="setCurrent2(this.value)" />
 
   <h3>Строка-комбинация фильтров</h3>
   <p for="textLogic">Функция с комбинацией обработки над числом</p>
@@ -27,7 +27,8 @@
   <p for="stopLogic">Функция с условием выхода</p>
 
   <textarea id="stopLogic" rows="10" cols="45" placeholder="Предел для останавливания">if (next < 1000){
-  return current = 5000
+  setCurrent(12321)
+  return true
 }</textarea>
   <hr />
   <button onclick="makeOneStep()">Запустить 1 шаг</button>
@@ -41,21 +42,21 @@
   <script src="coder-api.js"></script>
   <script src="coder-engine.js"></script>
   <script>
-    function setCurrent(value) {
+    function setCurrent2(value) {
       next = value
       current = value
     }
-    setCurrent(10000)
+    setCurrent2(10000)
 
 
 
     function makeOneStep() {
       let textLogic = document.getElementById('textLogic').value
-      console.log('current', current)
+      console.log('current', current, 'next', next)
       setStop(document.getElementById('stopLogic').value)
       console.log(stop)
 
-      makeStep(logic(textLogic))
+      makeStep(inFunc(textLogic))
       document.getElementById('result').innerHTML = '<li>' + steps.join('</li><li>') + '</li>'
     }
   </script>

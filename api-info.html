@@ -14,9 +14,36 @@
   <a href="play-zone.html">Игровая зона конструтора</a>
   <a href="api-info.html">Документация API</a>
   <a href="api-play-zone.html">Игровая зона API</a>
-  <a href="https://github.com/Lyumih/ultimate_coder" style="float: right">Мы на GitHub</a>
+  <a href="https://github.com/Lyumih/ultimate_coder" target="blank" style="float: right">Мы на GitHub</a>
 
-  <h3>API Методы</h3>
+  <h2>API Движок для кодирования. <a href="coder-engine.js" target="blank">Библиотека coder-engine.js</a></h2>
+  <h4>Глобальные Переменные</h4>
+  <ol>
+    <li>steps : [] - массив шагов, которые были получены последовательно за все циклы</li>
+    <li>current : string | number -строка или число с текущим значением.</li>
+    <li>next : string | number - строка или число с возможным следующим значением</li>
+    <li>stop : string - строка с функцией для вызова проверки, закончены ли шаги на данном цикле</li>
+    <li>stop : string - строка с функцией для вызова проверки, закончены ли шаги на данном цикле</li>
+  </ol>
+  <h4>Методы</h4>
+  <ol>
+    <li>makeStep(text) : [] - Основная логика. Позволяет добавить текущий шаг и вызвать логику по добавлению следующего
+      числа или выхода для следующего цикла.
+      Пример
+      makeStep("1523")-> steps["1532"]</li>
+    <li>inFunc(text) : string - вызывает функцию из полученного текста и возвращает её значение. Пример 'inFunc('return
+      true')' -> true
+    </li>
+    <li>setStop(text) : undefind - На входе принимает текст с функцией для последующей проверки, нужно ли изменять
+      текущее значение current. Пример: setStop('return next % 2 !==0')</li>
+    <li>isStop() : boolean - выполняет функцию из переменной stop и возвращает true если цикл шагов закончен. Пример: isStop() -> true
+    </li>
+    <li>setCurrent(value) : text - Устанавливает текущее значение для current. Пример. setCurrent(1234) -> 1234</li>
+  </ol>
+  <hr />
+
+  <h2>API методов. <a href="coder-api.js" target="blank">Библиотека coder-api.js</a></h2>
+  <h4>Методы: </h4>
   <ol>
     <li>sumNumbersByIndex(item, first, second) : number - возвращает сумму цифр на индексах first и second у item.
       Пример
@@ -33,101 +60,11 @@
   <ol>
     <li>Встроеная библиотека Math <a
         href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math">Math - JavaScript |
-        MDN</a></li>
+        MDN</a>
+    </li>
   </ol>
 
-  <script>
-    let base = "123456789";
-    // calc(base);
-    // increment("21", 20);
 
-    binary("20");
-    let to = convert("1231412");
-    let from = convertBack(to);
-    console.log(to, from);
-    console.log(crat(10, 2));
-
-    function calc(base) {
-      console.log(base);
-      for (let step = 0; base.length > 2; step++) {
-        let short = base.substr(0, base.length - 2);
-        let two = base.substr(-2);
-        let three = base.substr(-3);
-        let tail = three - two;
-        base = short + tail;
-        console.log(short, two, three, tail);
-        console.log(step, base);
-        if (step > 10) {
-          console.log("break");
-          return;
-        }
-      }
-    }
-
-    function increment(base, step) {
-      console.log("increment", base, step);
-      while (step > 0) {
-        step--;
-        let short = base.substr(0, base.length - 2);
-        let two = base.substr(-2);
-        let three = base.substr(-3);
-        let tail = Number(two) + 99;
-        base = short + tail;
-        console.log(short, two, three, tail);
-        console.log(step, base);
-      }
-    }
-
-    function binary(inner) {
-      let length = inner.length;
-      let max = "9".repeat(length);
-      console.log(length, max, inner);
-
-      let current = "0".repeat(length);
-
-      for (let step = 0; step < 4; step++) {
-        if (current == inner) {
-          console.log("Найдено", current);
-        } else if (current > inner) {
-          console.log(" inner big", current, inner);
-        } else {
-          console.log(" inner small", current, inner);
-        }
-      }
-    }
-
-    function convert(inner) {
-      let letters = inner.split("");
-      return letters.map((letter, index) =>
-        ("" + (index % 2)).repeat(letter)
-      );
-    }
-
-    function convertBack(arr) {
-      return arr.map(letter => letter.length);
-    }
-
-    function crat(val) {
-      console.log(val);
-      let count = [];
-      for (let start = 2; start < val; start++) {
-        if (val % start == 0) {
-          count.push(start);
-        }
-      }
-      return count;
-    }
-
-    function prop(val) {
-      let prop = [];
-      prop.push(val % 2 == 0);
-      prop.push(val % 3 == 0);
-      prop.push(val % 5 == 0);
-      prop.push(val % 7 == 0);
-      prop.push(val % 11 == 0);
-      return prop;
-    }
-  </script>
 </body>
 
 </html>
