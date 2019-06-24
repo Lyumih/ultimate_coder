@@ -21,12 +21,12 @@
 
   <h3>Строка-комбинация фильтров</h3>
   <p for="textLogic">Функция с комбинацией обработки над числом</p>
-  <textarea id="textLogic" rows="10" cols="45" placeholder="Функция с логикой">return crat(current, 2) 
+  <textarea id="textLogic" rows="7" cols="45" placeholder="Функция с логикой">return crat(current, 2) 
     ? current / 2 
     : current - 11</textarea>
   <p for="stopLogic">Функция с условием выхода</p>
 
-  <textarea id="stopLogic" rows="10" cols="45" placeholder="Предел для останавливания">if (next < 1000){
+  <textarea id="stopLogic" rows="7" cols="45" placeholder="Предел для останавливания">if (next < 1000){
   setCurrent(12321)
   return true
 }</textarea>
@@ -51,8 +51,8 @@
       : current - 11
     </li>
   </ul>
-
   <script src="coder-api.js"></script>
+  <script src="coder-hashing.js"></script>
   <script src="coder-engine.js"></script>
   <script>
     function setCurrent2(value) {
