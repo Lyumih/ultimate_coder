@@ -16,14 +16,23 @@
 
   <h3>API Методы</h3>
   <ol>
-    <li>sumNumberByIndex(item, first, second) : number - возвращает сумму цифр на индексах first и second у item. Пример
+    <li>sumNumbersByIndex(item, first, second) : number - возвращает сумму цифр на индексах first и second у item.
+      Пример
       2512->
-      sumNumberByIndex(2512, 0, 3) -> 4</li>
-    <li>crat(item, pow) : boolean - возвращает true, если item кратно pow. Пример 2512 и 4 -> crat(2512, 4) -> true</li>
+      sumNumbersByIndex(2512, 0, 3) -> 4</li>
+    <li>crat(item, power) : boolean - возвращает true, если item кратно power. Пример 2512 и 4 -> crat(2512, 4) -> true
+    </li>
     <li>adler32(item) : string - возвращает 8-значный hash от item по шифру Adler32. Пример 2512 -> adler32(2512) ->
       01ff00cb</li>
   </ol>
   <hr />
+
+  <h3>Нативные методы JS</h3>
+  <ol>
+    <li>Встроеная библиотека Math <a
+        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math">Math - JavaScript |
+        MDN</a></li>
+  </ol>
 
   <script>
     let base = "123456789";
