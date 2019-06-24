@@ -23,6 +23,8 @@
     <input type="first" id="first" name="first" value="3">
     <label for="second">Second. Второй параметр</label>
     <input type="second" id="second" name="second" value="2">
+    <hr>
+    <h2>API методов. <a href="coder-api.js" target="blank">Библиотека coder-api.js</a></h2>
     <ul>
         <li><button onclick="result(sumNumbersByIndex, 'resultSumNumbersByIndex')">sumNumbersByIndex(item,
                 first,
@@ -33,10 +35,25 @@
             Result: <span id="resultCrat"></span>
         </li>
     </ul>
-
-
+    <hr>
+    <h2>API Хэширование. <a href="coder-hashing.js" target="blank">Библиотека coder-hashing.js</a></h2>
+    <ul>
+        <li><button onclick="result(adler32, 'resultAdler32')">adler32(item)</button>
+            Result: <span id="resultAdler32"></span>
+        </li>
+        <li><button onclick="result(md5, 'resultMd5')">md5(item)</button>
+            Result: <span id="resultMd5"></span>
+        </li>
+        <li><button onclick="result(sha224, 'resultSha224')">sha224(item)</button>
+            Result: <span id="resultSha224"></span>
+        </li>
+        <li><button onclick="result(sha256, 'resultSha256')">sha256(item)</button>
+            Result: <span id="resultSha256"></span>
+        </li>
+    </ul>
 
     <script src="coder-api.js"></script>
+    <script src="coder-hashing.js"></script>
     <script src="coder-engine.js"></script>
     <script>
         function result(myFunction, idResult) {
