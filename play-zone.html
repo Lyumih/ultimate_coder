@@ -39,6 +39,19 @@
       Отсутствуют инструкции</li>
   </ol>
 
+  <hr>
+  <h4>Кейсы: </h4>
+  <ul>
+    <li>Если чётное - делим на 2. Если нечетное - убираем последний знак. Код: return crat(current, 2)
+      ? current / 2
+      : (''+current).substr(0,(''+current).length-1)
+    </li>
+    <li>Если кратно 3 - делим на 3. Иначе - вычитаем 11. Код: return crat(current, 3)
+      ? current / 3
+      : current - 11
+    </li>
+  </ul>
+
   <script src="coder-api.js"></script>
   <script src="coder-engine.js"></script>
   <script>
