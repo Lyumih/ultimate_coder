@@ -1,55 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>API игровая зона</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <a href="index.html">Главная информация</a>
     <a href="constructor.html">Конструктор кодера</a>
     <a href="play-zone.html">Игровая зона конструтора</a>
     <a href="api-info.html">Документация API</a>
     <a href="api-play-zone.html">Игровая зона API</a>
-    <a href="https://github.com/Lyumih/ultimate_coder" target="blank" style="float: right">Мы на GitHub</a>
+    <a
+      href="https://github.com/Lyumih/ultimate_coder"
+      target="blank"
+      style="float: right"
+      >Мы на GitHub</a
+    >
     <p>Игровая площадка для API библиотеки</p>
     <label for="item">Item. Начальное число</label>
-    <input type="text" id="item" name="item" value="2152">
-    <br>
+    <input type="text" id="item" name="item" value="2152" />
+    <br />
     <label for="first">First. Первый параметр</label>
-    <input type="first" id="first" name="first" value="3">
+    <input type="first" id="first" name="first" value="3" />
     <label for="second">Second. Второй параметр</label>
-    <input type="second" id="second" name="second" value="2">
-    <hr>
-    <h2>API методов. <a href="coder-api.js" target="blank">Библиотека coder-api.js</a></h2>
+    <input type="second" id="second" name="second" value="2" />
+    <hr />
+    <h2>
+      API методов.
+      <a href="coder-api.js" target="blank">Библиотека coder-api.js</a>
+    </h2>
     <ul>
-        <li><button onclick="result(sumNumbersByIndex, 'resultSumNumbersByIndex')">sumNumbersByIndex(item,
-                first,
-                second)</button>
-            Result: <span id="resultSumNumbersByIndex"></span>
-        </li>
-        <li><button onclick="result(crat, 'resultCrat')">crat(item, power)</button>
-            Result: <span id="resultCrat"></span>
-        </li>
+      <li>
+        <button onclick="result(sumNumbersByIndex, 'sumNumbersByIndex')">
+          sumNumbersByIndex(item, first, second)
+        </button>
+        Result: <span id="sumNumbersByIndex"></span>
+      </li>
+      <li>
+        <button onclick="result(crat, 'crat')">crat(item, power)</button>
+        Result: <span id="crat"></span>
+      </li>
+      <li>
+        <button onclick="result(unique, 'unique')">unique(item)</button>
+        Result: <span id="unique"></span>
+      </li>
+      <li>
+        <button
+          onclick="result(item.sort(sortByNumber), 'sortByNumber')"
+          disabled
+        >
+          item.sort(sortByNumber)
+        </button>
+        Result: <span id="sortByNumber"></span>
+      </li>
+      <li>
+        <button onclick="result(pascalTriangl, 'pascalTriangl')">
+          !!!pascalTriangl(item)
+        </button>
+        Result: <span id="pascalTriangl"></span>
+      </li>
     </ul>
-    <hr>
-    <h2>API Хэширование. <a href="coder-hashing.js" target="blank">Библиотека coder-hashing.js</a></h2>
+    <hr />
+    <h2>
+      API Хэширование.
+      <a href="coder-hashing.js" target="blank">Библиотека coder-hashing.js</a>
+    </h2>
     <ul>
-        <li><button onclick="result(adler32, 'resultAdler32')">adler32(item)</button>
-            Result: <span id="resultAdler32"></span>
-        </li>
-        <li><button onclick="result(md5, 'resultMd5')">md5(item)</button>
-            Result: <span id="resultMd5"></span>
-        </li>
-        <li><button onclick="result(sha224, 'resultSha224')">sha224(item)</button>
-            Result: <span id="resultSha224"></span>
-        </li>
-        <li><button onclick="result(sha256, 'resultSha256')">sha256(item)</button>
-            Result: <span id="resultSha256"></span>
-        </li>
+      <li>
+        <button onclick="result(adler32, 'resultAdler32')">
+          adler32(item)
+        </button>
+        Result: <span id="resultAdler32"></span>
+      </li>
+      <li>
+        <button onclick="result(md5, 'resultMd5')">md5(item)</button> Result:
+        <span id="resultMd5"></span>
+      </li>
+      <li>
+        <button onclick="result(sha224, 'resultSha224')">sha224(item)</button>
+        Result: <span id="resultSha224"></span>
+      </li>
+      <li>
+        <button onclick="result(sha256, 'resultSha256')">sha256(item)</button>
+        Result: <span id="resultSha256"></span>
+      </li>
     </ul>
 
     <script src="coder-api.js"></script>
@@ -57,15 +94,18 @@
     <script src="coder-const.js"></script>
     <script src="coder-engine.js"></script>
     <script>
-        function result(myFunction, idResult) {
-            document.getElementById(idResult).innerText =
-                myFunction(value('item'), value('first'), value('second'))
-        }
+      function result(myFunction, idResult) {
+        console.log(myFunction);
+        document.getElementById(idResult).innerText = myFunction(
+          value("item"),
+          value("first"),
+          value("second")
+        );
+      }
 
-        function value(id) {
-            return document.getElementById(id).value
-        }
+      function value(id) {
+        return document.getElementById(id).value;
+      }
     </script>
-</body>
-
+  </body>
 </html>

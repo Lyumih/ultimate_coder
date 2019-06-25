@@ -1,91 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Документация API</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Документация API</title>
-</head>
+  <body>
+    <a href="index.html">Главная информация</a>
+    <a href="constructor.html">Конструктор кодера</a>
+    <a href="play-zone.html">Игровая зона конструтора</a>
+    <a href="api-info.html">Документация API</a>
+    <a href="api-play-zone.html">Игровая зона API</a>
+    <a
+      href="https://github.com/Lyumih/ultimate_coder"
+      target="blank"
+      style="float: right"
+      >Мы на GitHub</a
+    >
 
-<body>
-  <a href="index.html">Главная информация</a>
-  <a href="constructor.html">Конструктор кодера</a>
-  <a href="play-zone.html">Игровая зона конструтора</a>
-  <a href="api-info.html">Документация API</a>
-  <a href="api-play-zone.html">Игровая зона API</a>
-  <a href="https://github.com/Lyumih/ultimate_coder" target="blank" style="float: right">Мы на GitHub</a>
+    <h2>
+      API Движок для кодирования.
+      <a href="coder-engine.js" target="blank">Библиотека coder-engine.js</a>
+    </h2>
+    <h4>Глобальные Переменные</h4>
+    <ol>
+      <li>
+        steps : [] - массив шагов, которые были получены последовательно за все
+        циклы
+      </li>
+      <li>current : string | number -строка или число с текущим значением.</li>
+      <li>
+        next : string | number - строка или число с возможным следующим
+        значением
+      </li>
+      <li>
+        stop : string - строка с функцией для вызова проверки, закончены ли шаги
+        на данном цикле
+      </li>
+      <li>
+        stop : string - строка с функцией для вызова проверки, закончены ли шаги
+        на данном цикле
+      </li>
+    </ol>
 
-  <h2>API Движок для кодирования. <a href="coder-engine.js" target="blank">Библиотека coder-engine.js</a></h2>
-  <h4>Глобальные Переменные</h4>
-  <ol>
-    <li>steps : [] - массив шагов, которые были получены последовательно за все циклы</li>
-    <li>current : string | number -строка или число с текущим значением.</li>
-    <li>next : string | number - строка или число с возможным следующим значением</li>
-    <li>stop : string - строка с функцией для вызова проверки, закончены ли шаги на данном цикле</li>
-    <li>stop : string - строка с функцией для вызова проверки, закончены ли шаги на данном цикле</li>
-  </ol>
-  <h4>Методы</h4>
-  <ol>
-    <li>makeStep(text) : [] - Основная логика. Позволяет добавить текущий шаг и вызвать логику по добавлению следующего
-      числа или выхода для следующего цикла.
-      Пример
-      makeStep("1523")-> steps["1532"]</li>
-    <li>inFunc(text) : string - вызывает функцию из полученного текста и возвращает её значение. Пример 'inFunc('return
-      true')' -> true
-    </li>
-    <li>setStop(text) : undefind - На входе принимает текст с функцией для последующей проверки, нужно ли изменять
-      текущее значение current. Пример: setStop('return next % 2 !==0')</li>
-    <li>isStop() : boolean - выполняет функцию из переменной stop и возвращает true если цикл шагов закончен. Пример:
-      isStop() -> true
-    </li>
-    <li>setCurrent(value) : text - Устанавливает текущее значение для current. Пример. setCurrent(1234) -> 1234</li>
-  </ol>
-  <hr />
-  <h2>API методов. <a href="coder-api.js" target="blank">Библиотека coder-api.js</a></h2>
-  <h4>Методы: </h4>
-  <ol>
-    <li>sumNumbersByIndex(item, first, second) : number - возвращает сумму цифр на индексах first и second у item.
-      Пример
-      2512->
-      sumNumbersByIndex(2512, 0, 3) -> 4</li>
-    <li>crat(item, power) : boolean - возвращает true, если item кратно power. Пример 2512 и 4 -> crat(2512, 4) -> true
-    </li>
-    <li>adler32(item) : string - возвращает 8-значный hash от item по шифру Adler32. Пример 2512 -> adler32(2512) ->
-      01ff00cb</li>
-  </ol>
-  <hr />
+    <h4>Методы</h4>
+    <ol>
+      <li>
+        makeStep(text) : [] - Основная логика. Позволяет добавить текущий шаг и
+        вызвать логику по добавлению следующего числа или выхода для следующего
+        цикла. Пример makeStep("1523")-> steps["1532"]
+      </li>
+      <li>
+        inFunc(text) : string - вызывает функцию из полученного текста и
+        возвращает её значение. Пример 'inFunc('return true')' -> true
+      </li>
+      <li>
+        setStop(text) : undefind - На входе принимает текст с функцией для
+        последующей проверки, нужно ли изменять текущее значение current.
+        Пример: setStop('return next % 2 !==0')
+      </li>
+      <li>
+        isStop() : boolean - выполняет функцию из переменной stop и возвращает
+        true если цикл шагов закончен. Пример: isStop() -> true
+      </li>
+      <li>
+        setCurrent(value) : text - Устанавливает текущее значение для current.
+        Пример. setCurrent(1234) -> 1234
+      </li>
+    </ol>
+    <hr />
+    <h2>
+      API методов.
+      <a href="coder-api.js" target="blank">Библиотека coder-api.js</a>
+    </h2>
+    <h4>Методы:</h4>
+    <ol>
+      <li>
+        sumNumbersByIndex(item, first, second) : number - возвращает сумму цифр
+        на индексах first и second у item. Пример 2512-> sumNumbersByIndex(2512,
+        0, 3) -> 4
+      </li>
+      <li>
+        crat(item, power) : boolean - возвращает true, если item кратно power.
+        Пример 2512 и 4 -> crat(2512, 4) -> true
+      </li>
+      <li>
+        unique(array) : array - Возвращает несортированный массив с уникальными
+        значениями. Пример unique([1,2,2,5]) -> [1, 2, 5]
+      </li>
+      <li>
+        sortByNumber(array) : array - Вспомогательная функция компоратор,
+        возвращающая отсортированный массив для чисел по возрастанию. Пример
+        [1,5,2,2]sort() -> [1, 2, 2, 5]
+      </li>
 
-  <h2>API Хэширование. <a href="coder-hashing.js" target="blank">Библиотека coder-hashing.js</a></h2>
-  <h4>Методы: </h4>
-  <ol>
-    <li>adler32(text) : string - возвращает строку с шифрованием adler32 (8 символа). Пример adler32('2512') ->
-      "01ff00cb"</li>
-    <li>md5(text) : string - возвращает строку с шифрованием md5 (32 символа). Пример md5('2512') ->
-      "831caa1b600f852b7844499430ecac17"</li>
-    <li>sha224(text) : string - возвращает строку с шифрованием sha224 (56 символов). Пример sha224('2512') ->
-      "d3c596a9d75f877cd575aabfb55d9f75b3b852f11b6b43a7220ddd0e"</li>
-    <li>sha256(text) : string - возвращает строку с шифрованием sha256 (64 символа). Пример sha256('2512') ->
-      "25f9b3ab7e7d3634a79eab88d59a0b4592d42384900dfc10ecc481af5b8dfd3d"</li>
-  </ol>
-  <hr />
+      <li>
+        pascalTriangl(number) : array[array] - возвращает двумерный массив с
+        треугольником паскаля. Пример, pascalTriangl(3) -> [[1],[1,1],[1,2,1]]
+      </li>
+    </ol>
+    <hr />
 
-  <h3>Нативные методы JS</h3>
-  <ol>
-    <li>Array.prototype.flat() <a
-        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flat">Сделать массив
-        плоским</a></li>
-  </ol>
-  <ol>
-    <li>Встроеная библиотека Math <a
-        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math">Math - JavaScript |
-        MDN</a>
-    </li>
-  </ol>
+    <h2>
+      API Хэширование.
+      <a href="coder-hashing.js" target="blank">Библиотека coder-hashing.js</a>
+    </h2>
+    <h4>Методы:</h4>
+    <ol>
+      <li>
+        adler32(text) : string - возвращает строку с шифрованием adler32 (8
+        символа). Пример adler32('2512') -> "01ff00cb"
+      </li>
+      <li>
+        md5(text) : string - возвращает строку с шифрованием md5 (32 символа).
+        Пример md5('2512') -> "831caa1b600f852b7844499430ecac17"
+      </li>
+      <li>
+        sha224(text) : string - возвращает строку с шифрованием sha224 (56
+        символов). Пример sha224('2512') ->
+        "d3c596a9d75f877cd575aabfb55d9f75b3b852f11b6b43a7220ddd0e"
+      </li>
+      <li>
+        sha256(text) : string - возвращает строку с шифрованием sha256 (64
+        символа). Пример sha256('2512') ->
+        "25f9b3ab7e7d3634a79eab88d59a0b4592d42384900dfc10ecc481af5b8dfd3d"
+      </li>
+    </ol>
+    <hr />
 
-
-
-
-</body>
-
+    <h3>Нативные методы JS</h3>
+    <ol>
+      <li>
+        Array.prototype.flat()
+        <a
+          href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/flat"
+          >Сделать массив плоским</a
+        >
+      </li>
+    </ol>
+    <ol>
+      <li>
+        Встроеная библиотека Math
+        <a
+          href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math"
+          >Math - JavaScript | MDN</a
+        >
+      </li>
+    </ol>
+  </body>
 </html>
