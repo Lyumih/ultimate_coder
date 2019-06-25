@@ -57,3 +57,9 @@ function unique(arr) {
 function sortByNumber(a, b) {
   return a - b;
 }
+
+// функция возвращает зеркальную строку
+function mirror(left) {
+  let right = ("" + left).split("");
+  return right.reverse().join("");
+}
