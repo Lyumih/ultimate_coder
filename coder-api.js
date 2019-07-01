@@ -1,6 +1,13 @@
 // сумма 2 чисел по их индексу в строке
 function sumNumbersByIndex(item, first, second) {
   let letters = (item + "").split("");
+  if (first > letters.length || second > letters.length) return NaN
+  if (first < 0) {
+    first += letters.length
+  }
+  if (second < 0) {
+    second += letters.length
+  }
   return Number(letters[first]) + Number(letters[second]);
 }
 
