@@ -1,6 +1,13 @@
 // сумма 2 чисел по их индексу в строке
 function sumNumbersByIndex(item, first, second) {
   let letters = (item + "").split("");
+  if (first > letters.length || second > letters.length) return NaN
+  if (first < 0) {
+    first += letters.length
+  }
+  if (second < 0) {
+    second += letters.length
+  }
   return Number(letters[first]) + Number(letters[second]);
 }
 
@@ -56,4 +63,10 @@ function unique(arr) {
 // компоратор для функции сортировки по возрастанию. Для убывания можно использовать reverse()
 function sortByNumber(a, b) {
   return a - b;
+}
+
+// функция возвращает зеркальную строку
+function mirror(left) {
+  let right = ("" + left).split("");
+  return right.reverse().join("");
 }
