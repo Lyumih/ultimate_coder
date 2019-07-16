@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Тестирование скриптов</title>
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body>
-    <a href="index.html">Главная информация</a>
-    <a href="constructor.html">Конструктор кодера</a>
-    <a href="play-zone.html">Игровая зона конструтора</a>
-    <a href="api-info.html">Документация API</a>
-    <a href="api-play-zone.html">Игровая зона API</a>
-    <a href="https://github.com/Lyumih/ultimate_coder" target="blank" style="float: right">Мы на GitHub</a>
-    <p></p>
-</body>
+  <body>
+    <div id="app" class="container">
+      <h3>Таблица кратности до 10</h3>
+      <table class="table table-responsive table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th v-for="mult in 20">{{ mult }}</th>
+          </tr>
+        </thead>
 
+        <tr v-for="znam in 20">
+          <td v-if="znam > 1" v-for="mult in 20">
+            {{ Math.pow(znam, mult) }}={{ ("" + Math.pow(znam, mult)).length }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+
+  <script src="coder-api.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {}
+    });
+  </script>
 </html>
