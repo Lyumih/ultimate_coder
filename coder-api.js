@@ -78,3 +78,43 @@ function mirror(left) {
   let right = ("" + left).split("");
   return right.reverse().join("");
 }
+
+function PowNearest(pow, number) {
+  for (let step = 0; step < 100000; step++) {
+    if (Math.pow(pow, step) > number)
+      return {
+        base: pow,
+        min: step - 1,
+        remainderMin: number - Math.pow(pow, step - 1),
+        remainderMax: number - Math.pow(pow, step),
+        numberMin: Math.pow(pow, step - 1),
+        max: step,
+        numberMax: Math.pow(pow, step),
+        number: number
+      };
+  }
+}
+
+/**
+ * Метод позволяет вернуть минимальные значения кратности для этого числа
+ *
+ * @param {number} steps
+ * @param {number} number
+ * @param {boolean|null} max
+ */
+function collectPowNearest(steps, number, max = false) {
+  let powList = [];
+  for (let step = 2; step <= steps; step++) {
+    powList.push(PowNearest(step, number));
+  }
+  console.log(max);
+  if (max === null) return powList;
+  else if (max) return powList.sort((a, b) => b.remainderMax - a.remainderMax);
+  else return powList.sort((a, b) => a.remainderMin - b.remainderMin);
+}
+
+function random(min = 0, max) {
+  var rand = min - 0.5 + Math.random() * (max - min + 1);
+  rand = Math.round(rand);
+  return rand;
+}
