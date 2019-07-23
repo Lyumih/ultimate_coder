@@ -1,12 +1,12 @@
 // сумма 2 чисел по их индексу в строке
 function sumNumbersByIndex(item, first, second) {
   let letters = (item + "").split("");
-  if (first > letters.length || second > letters.length) return NaN
+  if (first > letters.length || second > letters.length) return NaN;
   if (first < 0) {
-    first += letters.length
+    first += letters.length;
   }
   if (second < 0) {
-    second += letters.length
+    second += letters.length;
   }
   return Number(letters[first]) + Number(letters[second]);
 }
@@ -21,6 +21,14 @@ function factorial(n) {
   var result = 1;
   while (n) {
     result *= n--;
+  }
+  return result;
+}
+
+function repeatPower(number, maxPower) {
+  let result = [];
+  for (let step = 1; step <= maxPower; step++) {
+    result.push(Math.pow(number, step));
   }
   return result;
 }

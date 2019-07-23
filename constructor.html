@@ -1,158 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Конструктор кодера</title>
-  </head>
-  <body>
-    <a href="index.html">Главная информация</a>
-    <a href="constructor.html">Конструктор кодера</a>
-    <a href="play-zone.html">Игровая зона конструтора</a>
-    <a href="api-info.html">Документация API</a>
-    <a href="api-play-zone.html">Игровая зона API</a>
-    <a href="https://github.com/Lyumih/ultimate_coder" target="blank" style="float: right">Мы на GitHub</a>
 
-    <h3>Классификация методов</h3>
-    <ol>
-      <li>Вычитание целого числа из изначального</li>
-      <li>Нахождение общего просто делителя числа (кратность)</li>
-      <li>Преобразование числа в другое</li>
-      <li>Нахождение следующего числа из предыдущего</li>
-      <li>Проверка подлинности числа шифрованием SHA/MD5/ADLER32 и др.</li>
-      <li>
-        Преобразование в другой вид информации (текст, изображение, музыка и
-        т.д.)
-      </li>
-      <li>Дополнительный смысл в числах</li>
-    </ol>
-    <hr />
-    <h3>Инструменты: Циклы и условия</h3>
-    <ol>
-      <li><button>ЦИКЛ СТАРТ</button></li>
-      <li><button>ЦИКЛ КОНЕЦ</button></li>
-      <li><button>ПРОДОЛЖИТЬ</button></li>
-      <li><button>ПРЕКРАТИТЬ</button></li>
-      <li><button>ЕСЛИ</button></li>
-      <li><button>ИНАЧЕ ЕСЛИ</button></li>
-      <li><button>ЕСЛИ</button></li>
-      <li><button>ВЕРНУТЬ</button></li>
-      <li><button>МЕТОД</button></li>
-    </ol>
-    <hr />
-    <h3>Создать комбинацию</h3>
-    <ol>
-      <li>ЦИКЛ СТАРТ</li>
-      <li>ЕСЛИ МЕТОД кратность числу 2</li>
-      <li>ПРОДОЖАЕМ</li>
-      <li>ИНАЧЕ</li>
-      <li>МЕТОД Вычитание 11</li>
-      <li>ЦИКЛ КОНЕЦ</li>
-    </ol>
-    <button>Добавить шаг</button>
-    <button>Сохранить</button>
-    <hr />
-    <h3>Примеры созданных комбинаций</h3>
-    <ol>
-      <li>Деление на 2 четного числа и вычитание 11, если нечетно</li>
-      <li>
-        Выбивание последнего символа строки и проверка хэша ADLER32 на строке
-        после N шага
-      </li>
-    </ol>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Конструктор кодера</title>
+</head>
 
-    <script>
-      let base = "123456789";
-      // calc(base);
-      // increment("21", 20);
+<body>
+  <a href="index.html">Главная информация</a>
+  <a href="constructor.html">Конструктор кодера</a>
+  <a href="play-zone.html">Игровая зона конструтора</a>
+  <a href="api-info.html">Документация API</a>
+  <a href="api-play-zone.html">Игровая зона API</a>
+  <a href="table-pow.html">Таблица степени до 20</a>
+  <a href="https://github.com/Lyumih/ultimate_coder" target="blank" style="float: right">Мы на GitHub</a>
 
-      binary("20");
-      let to = convert("1231412");
-      let from = convertBack(to);
-      console.log(to, from);
-      console.log(crat(10, 2));
+  <h3>Классификация методов</h3>
+  <ol>
+    <li>Вычитание целого числа из изначального</li>
+    <li>Нахождение общего просто делителя числа (кратность)</li>
+    <li>Преобразование числа в другое</li>
+    <li>Нахождение следующего числа из предыдущего</li>
+    <li>Проверка подлинности числа шифрованием SHA/MD5/ADLER32 и др.</li>
+    <li>
+      Преобразование в другой вид информации (текст, изображение, музыка и
+      т.д.)
+    </li>
+    <li>Дополнительный смысл в числах</li>
+  </ol>
+  <hr />
+  <h3>Инструменты: Циклы и условия</h3>
+  <ol>
+    <li><button>ЦИКЛ СТАРТ</button></li>
+    <li><button>ЦИКЛ КОНЕЦ</button></li>
+    <li><button>ПРОДОЛЖИТЬ</button></li>
+    <li><button>ПРЕКРАТИТЬ</button></li>
+    <li><button>ЕСЛИ</button></li>
+    <li><button>ИНАЧЕ ЕСЛИ</button></li>
+    <li><button>ЕСЛИ</button></li>
+    <li><button>ВЕРНУТЬ</button></li>
+    <li><button>МЕТОД</button></li>
+  </ol>
+  <hr />
+  <h3>Создать комбинацию</h3>
+  <ol>
+    <li>ЦИКЛ СТАРТ</li>
+    <li>ЕСЛИ МЕТОД кратность числу 2</li>
+    <li>ПРОДОЖАЕМ</li>
+    <li>ИНАЧЕ</li>
+    <li>МЕТОД Вычитание 11</li>
+    <li>ЦИКЛ КОНЕЦ</li>
+  </ol>
+  <button>Добавить шаг</button>
+  <button>Сохранить</button>
+  <hr />
+  <h3>Примеры созданных комбинаций</h3>
+  <ol>
+    <li>Деление на 2 четного числа и вычитание 11, если нечетно</li>
+    <li>
+      Выбивание последнего символа строки и проверка хэша ADLER32 на строке
+      после N шага
+    </li>
+  </ol>
 
-      function calc(base) {
-        console.log(base);
-        for (let step = 0; base.length > 2; step++) {
-          let short = base.substr(0, base.length - 2);
-          let two = base.substr(-2);
-          let three = base.substr(-3);
-          let tail = three - two;
-          base = short + tail;
-          console.log(short, two, three, tail);
-          console.log(step, base);
-          if (step > 10) {
-            console.log("break");
-            return;
-          }
+  <script>
+    let base = "123456789";
+    // calc(base);
+    // increment("21", 20);
+
+    binary("20");
+    let to = convert("1231412");
+    let from = convertBack(to);
+    console.log(to, from);
+    console.log(crat(10, 2));
+
+    function calc(base) {
+      console.log(base);
+      for (let step = 0; base.length > 2; step++) {
+        let short = base.substr(0, base.length - 2);
+        let two = base.substr(-2);
+        let three = base.substr(-3);
+        let tail = three - two;
+        base = short + tail;
+        console.log(short, two, three, tail);
+        console.log(step, base);
+        if (step > 10) {
+          console.log("break");
+          return;
         }
       }
+    }
 
-      function increment(base, step) {
-        console.log("increment", base, step);
-        while (step > 0) {
-          step--;
-          let short = base.substr(0, base.length - 2);
-          let two = base.substr(-2);
-          let three = base.substr(-3);
-          let tail = Number(two) + 99;
-          base = short + tail;
-          console.log(short, two, three, tail);
-          console.log(step, base);
+    function increment(base, step) {
+      console.log("increment", base, step);
+      while (step > 0) {
+        step--;
+        let short = base.substr(0, base.length - 2);
+        let two = base.substr(-2);
+        let three = base.substr(-3);
+        let tail = Number(two) + 99;
+        base = short + tail;
+        console.log(short, two, three, tail);
+        console.log(step, base);
+      }
+    }
+
+    function binary(inner) {
+      let length = inner.length;
+      let max = "9".repeat(length);
+      console.log(length, max, inner);
+
+      let current = "0".repeat(length);
+
+      for (let step = 0; step < 4; step++) {
+        if (current == inner) {
+          console.log("Найдено", current);
+        } else if (current > inner) {
+          console.log(" inner big", current, inner);
+        } else {
+          console.log(" inner small", current, inner);
         }
       }
+    }
 
-      function binary(inner) {
-        let length = inner.length;
-        let max = "9".repeat(length);
-        console.log(length, max, inner);
+    function convert(inner) {
+      let letters = inner.split("");
+      return letters.map((letter, index) =>
+        ("" + (index % 2)).repeat(letter)
+      );
+    }
 
-        let current = "0".repeat(length);
+    function convertBack(arr) {
+      return arr.map(letter => letter.length);
+    }
 
-        for (let step = 0; step < 4; step++) {
-          if (current == inner) {
-            console.log("Найдено", current);
-          } else if (current > inner) {
-            console.log(" inner big", current, inner);
-          } else {
-            console.log(" inner small", current, inner);
-          }
+    function crat(val) {
+      console.log(val);
+      let count = [];
+      for (let start = 2; start < val; start++) {
+        if (val % start == 0) {
+          count.push(start);
         }
       }
+      return count;
+    }
 
-      function convert(inner) {
-        let letters = inner.split("");
-        return letters.map((letter, index) =>
-          ("" + (index % 2)).repeat(letter)
-        );
-      }
+    function prop(val) {
+      let prop = [];
+      prop.push(val % 2 == 0);
+      prop.push(val % 3 == 0);
+      prop.push(val % 5 == 0);
+      prop.push(val % 7 == 0);
+      prop.push(val % 11 == 0);
+      return prop;
+    }
+  </script>
+</body>
 
-      function convertBack(arr) {
-        return arr.map(letter => letter.length);
-      }
-
-      function crat(val) {
-        console.log(val);
-        let count = [];
-        for (let start = 2; start < val; start++) {
-          if (val % start == 0) {
-            count.push(start);
-          }
-        }
-        return count;
-      }
-
-      function prop(val) {
-        let prop = [];
-        prop.push(val % 2 == 0);
-        prop.push(val % 3 == 0);
-        prop.push(val % 5 == 0);
-        prop.push(val % 7 == 0);
-        prop.push(val % 11 == 0);
-        return prop;
-      }
-    </script>
-  </body>
 </html>
