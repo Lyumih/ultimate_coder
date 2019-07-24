@@ -129,3 +129,7 @@ Array.prototype.diff = function (a) {
 Array.prototype.unique = function (a) {
   return Array.from(new Set(this));
 };
+
+String.prototype.replaceAll = function (search, replace) {
+  return this.split(search).join(replace);
+}
