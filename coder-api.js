@@ -118,3 +118,14 @@ function random(min = 0, max) {
   rand = Math.round(rand);
   return rand;
 }
+
+//TODO: сделать такое-же для чисел
+Array.prototype.diff = function (a) {
+  return this.filter(function (i) {
+    return a.indexOf(i) < 0;
+  });
+};
+
+Array.prototype.unique = function (a) {
+  return Array.from(new Set(this));
+};

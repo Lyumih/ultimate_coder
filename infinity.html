@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Тестирование скриптов</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div id="app" class="container">
+      <a href="index.html">Главная информация</a>
+      <a href="constructor.html">Конструктор кодера</a>
+      <a href="play-zone.html">Игровая зона конструтора</a>
+      <a href="api-info.html">Документация API</a>
+      <a href="api-play-zone.html">Игровая зона API</a>
+      <a href="table-pow.html">Таблица степени до 20</a>
+      <a href="infinity.html">Бесконечное тестирование</a>
+      <a
+        href="https://github.com/Lyumih/ultimate_coder"
+        target="blank"
+        style="float: right"
+        >Мы на GitHub</a
+      >
+
+      <h1 class="my-4">Бесконечное тестирование</h1>
+      <div>
+        <button
+          class="btn btn-secondary my-3"
+          @click="generateText(lengthNewText)"
+        >
+          Сгенерировать строку
+        </button>
+
+        <span>Длина новой строки: </span>
+        <input v-model.number="lengthNewText" />
+      </div>
+
+      <div class="">
+        <h3>Шаг: {{ step }}</h3>
+        <button class="btn btn-primary" @click="addRandomLetter">
+          Следующий шаг
+        </button>
+        <div class="row">
+          <span>Длина новой строки: </span>
+          <input v-model.number="lengthCrossingForward" />
+          <button class="btn btn-primary" @click="addRandomLetterUnleeCrossing">
+            Продолжать искать, пока не будет найдена последовательность
+          </button>
+        </div>
+        <p>Длина строки: {{ text.length }}</p>
+        <p>Строка: {{ text }}</p>
+        <p>Длина хэша: {{ hash.length }}</p>
+        <p>Хэш: {{ hash }}</p>
+        <p>Разница в буквах: {{ diffLetters.length }} шт. {{ diffLetters }}</p>
+        <p>
+          Пересекающиеся последовательно буквы:
+          {{ crossingLettersForward.length }} шт. {{ crossingLettersForward }}
+        </p>
+        <br />
+        <p>
+          Длина соединения хэша и модифицированной строки:
+          {{ resultText.length - 1 }}
+        </p>
+        <p>
+          Результат соединения хэша и модифицированной строки: {{ resultText }}
+        </p>
+      </div>
+    </div>
+  </body>
+
+  <script src="coder-api.js"></script>
+  <script src="coder-hashing.js"></script>
+  <script src="coder-const.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        step: 0,
+        text: "0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF".toLowerCase(),
+        alphabet: ALPHABET_X16.toLowerCase().split(""),
+        lengthNewText: 32,
+        lengthCrossingForward: 32
+      },
+      computed: {
+        hash() {
+          return md5(this.text);
+        },
+        resultText() {
+          return (
+            this.hash + this.text.substr(0, this.text.length - this.hash.length)
+          );
+        },
+        diffLetters() {
+          return unique(this.text.split("").diff(this.hash.split([""])));
+        },
+        crossingLettersForward() {
+          let letters = [];
+          let numberHash = 0;
+          let hashLetters = this.hash.split("");
+          let textLetters = this.text.split("");
+          for (numberText = 0; numberText < textLetters.length; numberText++) {
+            if (numberHash > hashLetters.length - 1) numberHash = 0;
+            if (textLetters[numberText] == hashLetters[numberHash]) {
+              numberHash++;
+              letters.push(textLetters[numberText]);
+            }
+          }
+          return letters;
+        }
+      },
+      methods: {
+        generateText(length) {
+          let newText = [];
+          for (let i = 0; i < length; i++) {
+            newText.push(this.alphabet[random(0, this.alphabet.length - 1)]);
+          }
+          this.text = newText.join("");
+        },
+        addRandomLetter() {
+          let letter = this.alphabet[random(0, this.alphabet.length - 1)];
+          this.text += letter;
+        },
+        addRandomLetterUnleeCrossing() {
+          this.addRandomLetter();
+          console.log(this.lengthCrossingForward);
+          while (
+            this.crossingLettersForward.length < this.lengthCrossingForward
+          ) {
+            if (this.text.length > 10000000) {
+              console.log("очень больше число");
+              break;
+            }
+
+            this.addRandomLetter();
+          }
+        }
+      }
+    });
+  </script>
+</html>
