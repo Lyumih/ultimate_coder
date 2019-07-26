@@ -1,6 +1,10 @@
 # [ultimate_coder. Перейти на сайт](https://lyumih.github.io/ultimate_coder/)
 ## Проект: одна из целей в жизни. Создать алгоритм сжатия текста с 99.9% и без потери данных.
 
+
+## Классификация используемых методов
+[https://github.com/Lyumih/ultimate_coder/projects/1](https://github.com/Lyumih/ultimate_coder/projects/1)
+
 [Общий смысл: в итоге будет задача преведения строки с "10101000110..." к строке "2АБ12", из которой можно будет снова востановить  "10101000110..."](https://lyumih.github.io/ultimate_coder/play-zone.html)
 
 
