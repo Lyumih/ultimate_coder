@@ -65,8 +65,15 @@
             <p>
                 Пересекающийся текст. Разделитель:
                 <input v-model="crossingDivider" /> <br />
-                <p v-html="styledCrossintText"></p>
+                Пересекающийся текст <span v-html="styledCrossintText"></span>
             </p>
+            <p>Удаление -1 букв в пересекающиеся текста: {{ deleteLetters.join("") }}</p>
+            <p>Индекс букв Пересекающиеся текста: {{ crossingForwardIndexs }}</p>
+            <p>Удаленные буквы: {{ lettersLost }}</p>
+            <br>
+            <p>Свойства:</p>
+            <p>Первая буква потерена: {{ isFirstLetterLost }}</p>
+            <p>Есть рядомстоящие буквы: {{ isPairLettersLost }}</p>
             <br />
             <p>
                 Длина соединения хэша и модифицированной строки:
@@ -82,103 +89,6 @@
 <script src="coder-api.js"></script>
 <script src="coder-hashing.js"></script>
 <script src="coder-const.js"></script>
-<script>
-    var app = new Vue({
-        el: "#app",
-        data: {
-            hashAlgorithmList: ["sha256", "md5", "adler32"],
-            hashAlgorithm: "md5",
-            step: 0,
-            text: "0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF".toLowerCase(),
-            alphabet: ALPHABET_X16.toLowerCase().split(""),
-            lengthNewText: 32,
-            lengthCrossingForward: 32,
-            crossingDivider: "~"
-        },
-        computed: {
-            hash() {
-                switch (this.hashAlgorithm) {
-                    case "sha256":
-                        return sha256(this.text);
-                    case "md5":
-                        return md5(this.text);
-                    case "adler32":
-                        return adler32(this.text);
-                }
-                return "hash algorithm not founded";
-            },
-            resultText() {
-                return (
-                    this.hash + this.text.substr(0, this.text.length - this.hash.length - 1)
-                );
-            },
-            diffLetters() {
-                return unique(this.text.split("").diff(this.hash.split([""])));
-            },
-            crossingLettersForward() {
-                let letters = [];
-                let numberHash = 0;
-                let hashLetters = this.hash.split("");
-                let textLetters = this.text.split("");
-                for (numberText = 0; numberText < textLetters.length; numberText++) {
-                    if (numberHash > hashLetters.length - 1) numberHash = 0;
-                    if (textLetters[numberText] == hashLetters[numberHash]) {
-                        numberHash++;
-                        letters.push(textLetters[numberText]);
-                    }
-                }
-                return letters;
-            },
-            crossingText() {
-                let textCrossing = [];
-                let numberHash = 0;
-                let hashLetters = this.hash.split("");
-                let textLetters = this.text.split("");
-                for (numberText = 0; numberText < textLetters.length; numberText++) {
-                    if (numberHash > hashLetters.length - 1) numberHash = 0;
-                    if (textLetters[numberText] == hashLetters[numberHash]) {
-                        numberHash++;
-                        textCrossing.push(this.crossingDivider);
-                    } else {
-                        textCrossing.push(textLetters[numberText]);
-                    }
-                }
-                return textCrossing.join("");
-            },
-            styledCrossintText() {
-                let styledText = this.crossingText.replaceAll(this.crossingDivider,
-                    "<span class='text-danger'>" + this.crossingDivider +"</span>")
-                return styledText
-            }
-        },
-        methods: {
-            generateText(length) {
-                let newText = [];
-                for (let i = 0; i < length; i++) {
-                    newText.push(this.alphabet[random(0, this.alphabet.length - 1)]);
-                }
-                this.text = newText.join("");
-            },
-            addRandomLetter() {
-                let letter = this.alphabet[random(0, this.alphabet.length - 1)];
-                this.text += letter;
-            },
-            addRandomLetterUnleeCrossing() {
-                this.addRandomLetter();
-                console.log(this.lengthCrossingForward);
-                while (
-                    this.crossingLettersForward.length < this.lengthCrossingForward
-                ) {
-                    if (this.text.length > 10000000) {
-                        console.log("очень больше число");
-                        break;
-                    }
-
-                    this.addRandomLetter();
-                }
-            }
-        }
-    });
-</script>
+<script src="js/infinity.js"></script>
 
 </html>
