@@ -47,16 +47,24 @@
                 Следующий шаг
             </button>
             <div>
-                <button class="btn btn-primary" @click="addRandomLetterUnleeCrossing">
+                <button class="btn btn-primary" @click="addRandomLetterUnlessCrossing">
                     Продолжать искать, пока не будет найдена последовательность
                 </button>
                 <span>Длина пересек. массива: </span>
                 <input v-model.number="lengthCrossingForward" />
             </div>
+            <div>
+                <button class="btn btn-primary" @click="addRandomLetterUnlessEndHash">
+                    Продолжать искать, пока не будет совпадение конца строки с хешем
+                </button>
+                <span>Длина конца хэша: </span>
+                <input v-model.number="lengthHashEnd" />
+            </div>
             <p>Длина строки: {{ text.length }}</p>
             <p>Строка: {{ text }}</p>
             <p>Длина хэша: {{ hash.length }}</p>
             <p>Хэш: {{ hash }}</p>
+            <p>Совпадение букв хэша и конца строки: {{textEndHash.length}} {{textEndHash}}</p>
             <p>Разница в буквах: {{ diffLetters.length }} шт. {{ diffLetters }}</p>
             <p>
                 Пересекающиеся последовательно буквы:

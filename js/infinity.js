@@ -8,6 +8,7 @@ var app = new Vue({
         alphabet: ALPHABET_X16.toLowerCase().split(""),
         lengthNewText: 12,
         lengthCrossingForward: 9,
+        lengthHashEnd: 5,
         crossingDivider: "~"
     },
     computed: {
@@ -96,7 +97,15 @@ var app = new Vue({
                 if (this.crossingForwardIndexs[index] == this.crossingForwardIndexs[index - 1] + 1) return true
             }
             return false
-        }
+        },
+        textEndHash() {
+            let textEnd = this.text.slice(-this.hash.length).split("")
+            for (let index = 0; index < textEnd.length; index++) {
+                if (textEnd[index] != this.hash.split("")[index]) textEnd[index] = ""
+            }
+            return textEnd.join("")
+        },
+
     },
     methods: {
         generateText(length) {
@@ -110,13 +119,24 @@ var app = new Vue({
             let letter = this.alphabet[random(0, this.alphabet.length - 1)];
             this.text += letter;
         },
-        addRandomLetterUnleeCrossing() {
+        addRandomLetterUnlessCrossing() {
             this.addRandomLetter();
             while (
                 this.crossingLettersForward.length < this.lengthCrossingForward
             ) {
                 if (this.text.length > 10000000) {
                     console.log("очень больше число");
+                    break;
+                }
+                this.addRandomLetter();
+            }
+        },
+        addRandomLetterUnlessEndHash() {
+            this.addRandomLetter();
+            while (
+                this.textEndHash.length < this.lengthHashEnd) {
+                if (this.text.length > 10000000) {
+                    alert("очень больше число");
                     break;
                 }
                 this.addRandomLetter();
