@@ -112,24 +112,51 @@ function collectPowNearest(steps, number, max = false) {
   else if (max) return powList.sort((a, b) => b.remainderMax - a.remainderMax);
   else return powList.sort((a, b) => a.remainderMin - b.remainderMin);
 }
-
-function random(min = 0, max) {
-  var rand = min - 0.5 + Math.random() * (max - min + 1);
-  rand = Math.round(rand);
-  return rand;
+function random(min, max) {
+  return Math.floor(Math.random() * (max + 1 - min)) + min;
 }
 
 //TODO: сделать такое-же для чисел
-Array.prototype.diff = function (a) {
-  return this.filter(function (i) {
+Array.prototype.diff = function(a) {
+  return this.filter(function(i) {
     return a.indexOf(i) < 0;
   });
 };
 
-Array.prototype.unique = function (a) {
+Array.prototype.unique = function(a) {
   return Array.from(new Set(this));
 };
 
-String.prototype.replaceAll = function (search, replace) {
+String.prototype.replaceAll = function(search, replace) {
   return this.split(search).join(replace);
-}
+};
+
+/**
+ * Получает сумму всех букв (hex) в строке и возврщает его значение
+ */
+String.prototype.cost = function() {
+  if (this.length === 0) return 0;
+  let reducer = (accumulator, currentValue) =>
+    parseInt(accumulator, 16) + parseInt(currentValue, 16);
+  return this.split("").reduce(reducer);
+};
+
+String.prototype.addRandomHex = function(length = 1) {
+  let alphabet = "0123456789abcdef".split("");
+  let newText = this;
+  for (let step = 0; step < length; step++) {
+    newText = newText + alphabet[random(0, alphabet.length - 1)];
+  }
+  return newText;
+};
+
+String.prototype.addRandomInt = function(length = 1) {
+  let alphabet = "0123456789".split("");
+  let newText = this;
+  for (let step = 0; step < length; step++) {
+    newText = newText + alphabet[random(0, alphabet.length - 1)];
+  }
+  return newText;
+};
+
+
