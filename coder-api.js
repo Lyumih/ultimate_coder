@@ -137,7 +137,7 @@ String.prototype.replaceAll = function(search, replace) {
 String.prototype.cost = function() {
   if (this.length === 0) return 0;
   let reducer = (accumulator, currentValue) =>
-    parseInt(accumulator, 16) + parseInt(currentValue, 16);
+    parseInt(accumulator) + parseInt(currentValue);
   return this.split("").reduce(reducer);
 };
 
@@ -158,5 +158,3 @@ String.prototype.addRandomInt = function(length = 1) {
   }
   return newText;
 };
-
-

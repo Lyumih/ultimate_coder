@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Найти стоимость строки</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div id="app" class="container">
+    <a href="index.html">Главная информация</a>
+    <a href="constructor.html">Конструктор кодера</a>
+    <a href="play-zone.html">Игровая зона конструтора</a>
+    <a href="api-info.html">Документация API</a>
+    <a href="api-play-zone.html">Игровая зона API</a>
+    <a href="table-pow.html">Таблица степени до 20</a>
+    <a href="infinity.html">Бесконечное тестирование</a>
+    <a href="find-hash.html">Найти хэш</a>
+    <a href="coded-encoded.html">Кодирование и раскодирование</a>
+    <br>
+    <a href="https://github.com/Lyumih/ultimate_coder" target="blank" style="float: right">Мы на GitHub</a>
+
+      <h1>Найти стоимость строки</h1>
+
+      <button
+        class="btn btn-secondary my-3"
+        @click="generateText(lengthNewText)"
+      >
+        Сгенерировать строку
+      </button>
+
+      <button class="btn btn-primary" @click="addRandomLetter">
+        Следующий шаг - добавить букву</button
+      ><button class="btn btn-primary" @click="addRandomLetterUnlessEndTail">
+        Искать пока сумма строки не совпадёт с окончанием строки
+      </button>
+      <p>Строка - {{ text }}</p>
+      <p>Длина строки - {{ text.length }}</p>
+      <p>Стоимость исходная: {{ tail }}</p>
+      <p>Общее окончание: длина {{ endTail.length }}. Строка: {{ endTail }}</p>
+      <p>Получившаяся строка: {{ text }}</p>
+    </div>
+  </body>
+
+  <script src="coder-api.js"></script>
+  <script src="coder-hashing.js"></script>
+  <script src="coder-const.js"></script>
+  <script src="js/find-cost.js"></script>
+</html>

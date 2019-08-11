@@ -1,48 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Тестирование скриптов</title>
+    <title>Кодирование и раскодирование</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body>
-    <a href="index.html">Главная информация</a>
-    <a href="constructor.html">Конструктор кодера</a>
-    <a href="play-zone.html">Игровая зона конструтора</a>
-    <a href="api-info.html">Документация API</a>
-    <a href="api-play-zone.html">Игровая зона API</a>
-    <a href="table-pow.html">Таблица степени до 20</a>
-    <a href="infinity.html">Бесконечное тестирование</a>
+  <body>
     <div id="app" class="container">
-        <h3>Таблица кратности до 20</h3>
-        <table class="table table-responsive table-bordered table-hover">
-            <thead class="thead-light">
-                <tr>
-                    <th v-for="mult in 20">{{ mult }}</th>
-                </tr>
-            </thead>
+      <a href="index.html">Главная информация</a>
+      <a href="constructor.html">Конструктор кодера</a>
+      <a href="play-zone.html">Игровая зона конструтора</a>
+      <a href="api-info.html">Документация API</a>
+      <a href="api-play-zone.html">Игровая зона API</a>
+      <a href="table-pow.html">Таблица степени до 20</a>
+      <a href="infinity.html">Бесконечное тестирование</a>
+      <a href="find-hash.html">Найти хэш</a>
+      <a href="coded-encoded.html">Кодирование и раскодирование</a>
+      <br>
+      <a
+        href="https://github.com/Lyumih/ultimate_coder"
+        target="blank"
+        style="float: right"
+        >Мы на GitHub</a
+      >
 
-            <tr v-for="znam in 20">
-                <td v-if="znam > 1" v-for="mult in 20">
-                    {{ Math.pow(znam, mult) }}={{ ("" + Math.pow(znam, mult)).length }}
-                </td>
-            </tr>
+      <h1 class="my-4">Кодирование и раскодирование</h1>
+      <div>
+        <table class="table table-bordered table-responsive">
+          <tr>
+            <th colspan="2">Исходная строка (16 сим.):</th>
+            <th colspan="3">0123456789abcdef</th>
+          </tr>
+          <tr>
+              <th>Шаг</th>
+            <th>Кодирование: свойства</th>
+            <th>Кодирование: строка</th>
+            <th>Раскодирование: строка</th>
+            <th>Раскодирование: свойства</th>
+          </tr><tr>
+            <td>1</td>
+            <td>Длина: 16</td>
+            <td>0123456789abcdef</td>
+            <td>0123456789abcde</td>
+            <td>Длина: 15</th>
+        </tr><tr>
+            <td>2</td>
+            <td>Длина: 15</td>
+            <td>0123456789abcde</td>
+            <td>0123456789abcd</td>
+            <td>Длина: 14</th>
+        </tr>
         </table>
+      </div>
     </div>
-</body>
+  </body>
 
-<script src="coder-api.js"></script>
-<script>
-    var app = new Vue({
-        el: "#app",
-        data: {}
-    });
-</script>
-
+  <script src="coder-api.js"></script>
+  <script src="coder-hashing.js"></script>
+  <script src="coder-const.js"></script>
 </html>
